@@ -1,8 +1,10 @@
 const router = require("express").Router();
 
 const Users = require("./users-model.js");
+const Products = require("../products/products-model.js")
+const restricted = require('../auth/restricted_middleware.js');
 
-router.get("/users", (req, res) => {
+router.get("/users", restricted, (req, res) => {
   Users.find()
     .then(users => {
       res.json(users);
@@ -10,7 +12,7 @@ router.get("/users", (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.get("/users/:id", (req, res) => {
+router.get("/users/:id", restricted, (req, res) => {
   const id = req.params.id
 
     Users.getById(id)
@@ -18,7 +20,7 @@ router.get("/users/:id", (req, res) => {
         if(user){
             res
             .status(200)
-            .json(lady)
+            .json(user)
         } else {
             res
             .status(404)

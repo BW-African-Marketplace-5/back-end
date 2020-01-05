@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const Users = require("../users/users-model.js");
 
-router.post("/register", (req, res) => {
+router.post("/register", validateUser, (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 12); 
   user.password = hash;
@@ -30,8 +30,8 @@ router.post("/login", (req, res) => {
 
         // send the token
         res.status(200).json({
-          token, // added token as part of the response sent
           message: `Welcome ${user.username}!`,
+          token: token // added token as part of the response sent
         });
       } else {
         res.status(401).json({ message: "Error logging in, please check your username and password!", error });
@@ -42,6 +42,18 @@ router.post("/login", (req, res) => {
     });
 });
 
+
+
+function validateUser(req, res, next) {
+  if (!req.body) {
+    res.status(400).json({ errorMessage: "Missing user data" });
+  } else if (!req.body.username || !req.body.password){
+    res.status(400).json({ errorMessage: "Please provide an object with the following keys {username:'', password:''}" });
+  } else{
+    next();
+  }
+};
+
 // this functions creates and signs the token
 function signToken(user) {
   const payload = {
@@ -51,7 +63,7 @@ function signToken(user) {
   const secret = process.env.JWT_SECRET || "The little boy jumped to see such fun, & the dish ran away with the spoon!";
 
   const options = {
-    expiresIn: "1h",
+    expiresIn: "1d",
   };
 
   return jwt.sign(payload, secret, options); // notice the return
