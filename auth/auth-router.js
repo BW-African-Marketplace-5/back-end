@@ -49,7 +49,8 @@ router.post("/login", validateUser, (req, res) => {
 // this functions creates and signs the token
 function signToken(user) {
   const payload = {
-    username: user.username
+    username: user.username,
+    id: user.id
   };
 
   const secret = process.env.JWT_SECRET || "The little boy jumped to see such fun, & the dish ran away with the spoon!";
@@ -58,7 +59,7 @@ function signToken(user) {
     expiresIn: "1d",
   };
 
-  return jwt.sign(payload, secret, options); // notice the return
+  return jwt.sign(payload, secret, options);
 }
 
 module.exports = router;
