@@ -12,12 +12,14 @@ server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
+server.get("/", (req, res) => {
+    res
+    .status(200)
+    .json({ api: "up", dbenv: process.env.DB_ENV });
+})
+
 server.use('/api', authRouter);
 server.use('/api', usersRouter);
-server.use('/api', productsRouter)
-
-server.get('/api', (req, res) => {
-    res.json({ api: "up"});
-});
+server.use('/api', productsRouter);
 
 module.exports = server;
