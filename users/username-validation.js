@@ -8,7 +8,8 @@ const findByName = username => {
 
 module.exports = (req, res, next) => {
   const incomingUsername = req.body.username;
-  findByName(incomingUsername).then(user => {
+  findByName(incomingUsername)
+  .then(user => {
     if (user === undefined) {
       next();
     } else {

@@ -3,8 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); 
 
 const Users = require("../users/users-model.js");
+const checkIfUserExists = require("../users/username-validation.js");
+const validateUser = require("../users/userdata-validation.js");
 
-router.post("/register", validateUser, (req, res) => {
+router.post("/register", validateUser, checkIfUserExists, (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 12); 
   user.password = hash;
@@ -43,16 +45,6 @@ router.post("/login", validateUser, (req, res) => {
 });
 
 
-
-function validateUser(req, res, next) {
-  if (!req.body) {
-    res.status(400).json({ errorMessage: "Missing user data" });
-  } else if (!req.body.username || !req.body.password){
-    res.status(400).json({ errorMessage: "Please provide an object with the following keys {username:'', password:''}" });
-  } else{
-    next();
-  }
-};
 
 // this functions creates and signs the token
 function signToken(user) {
