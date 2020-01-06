@@ -1,6 +1,8 @@
 # <center>Evends Backend</center>
 
-[Heroku App](https://salty-nick.herokuapp.com)
+[Heroku App](https://evendsapi.herokuapp.com)
+
+Base Url: https://evendsapi.herokuapp.com
 
 #### Pitch
 
@@ -47,8 +49,7 @@
 
 ```{
   "id": 4,
-  "username": "testuser",
-  "password": "$2a$12$wULTczvN4Wd5UXkfwShqfuKRfUEPHnnKZO96pL1DOlZhkecsRqTkS"
+  "username": "testuser"
 }
 ```
 
@@ -69,17 +70,14 @@ Content-Type: application/json
   {
     "id": 1,
     "username": "Alford Dawltrey",
-    "password": "ltvY1wtKh3"
   },
   {
     "id": 2,
     "username": "Caritta Ranaghan",
-    "password": "cc3akN6S"
   },
   {
     "id": 3,
     "username": "Georgeta Roddie",
-    "password": "GfxMLA"
   }
 ]
 ```
@@ -95,15 +93,9 @@ Content-Type: application/json
 ### Returns:
 
 ```
-note: Returned password will be encoded, so write down your testuser password.
-```
-
-
-```
 {
   "id": 10,
   "username": "Denver Ramalhete",
-  "password": "$2a$12$wULTczvN4Wd5UXkfwShqfuKRfUEPHnnKZO96pL1DOlZhkecsRqTkS"
 }
 ```
 
@@ -185,7 +177,7 @@ Product by id number.
 ## GET /api/products/:id/user
 
 ```
-note: :id is the user id
+Note: :id is the user id.
 ```
 
 ### Expected request headers:
