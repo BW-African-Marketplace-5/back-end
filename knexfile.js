@@ -40,7 +40,7 @@ module.exports = {
   },
 
   production: {
-    client: "pg", // install this npm package
+    client: "pg",
     connection: process.env.DATABASE_URL,
     migrations: {
       directory: "./data/migrations",
