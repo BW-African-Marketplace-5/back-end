@@ -17,7 +17,7 @@ server.use('/api', usersRouter);
 server.use('/api', productsRouter)
 
 server.get('/api', (req, res) => {
-    res.status(200).json({ api: "up", dbenv: process.env.DB_ENV });
+    res.json({ api: "up"});
 });
 
 module.exports = server;
