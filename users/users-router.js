@@ -16,7 +16,7 @@ router.get("/users/current", restricted, (req, res) => {
     .then(user => {
       let tmp = req.user
       console.log(req.user)
-      res.json({currentUsername: tmp.username, currentUserId: tmp.id});
+      res.json({currentUserId: tmp.id, currentUsername: tmp.username});
     })
     .catch(err => res.send(err));
 });

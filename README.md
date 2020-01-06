@@ -61,9 +61,14 @@ Base Url: https://evendsapi.herokuapp.com
 
 ```
 Content-Type: application/json
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODcxNDk5LCJleHAiOjE1NzM4NzUwOTl9.AEUWImMp4Tx8mMNIGYy7s6J_e3sB6zVuja7lYwcUSiU"
 ```
 
 ### Returns:
+
+```
+An array of all registered users with id and username.
+```
 
 ```
 [
@@ -88,14 +93,41 @@ Content-Type: application/json
 
 ```
 Content-Type: application/json
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODcxNDk5LCJleHAiOjE1NzM4NzUwOTl9.AEUWImMp4Tx8mMNIGYy7s6J_e3sB6zVuja7lYwcUSiU"
 ```
 
 ### Returns:
 
 ```
+A specific user by user id.
+```
+
+```
 {
   "id": 10,
   "username": "Denver Ramalhete",
+}
+```
+
+## GET /api/users/current
+
+### Expected request headers:
+
+```
+Content-Type: application/json
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODcxNDk5LCJleHAiOjE1NzM4NzUwOTl9.AEUWImMp4Tx8mMNIGYy7s6J_e3sB6zVuja7lYwcUSiU"
+```
+
+### Returns:
+
+```
+The id and username of the current logged in user.
+```
+
+```
+{
+  "currentUserId": 13,
+  "currentUsername": "Mango Lady"
 }
 ```
 
@@ -113,7 +145,7 @@ Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODc
 ### Returns:
 
 ```
-An array of objects of all products.
+An array of objects of all listed products.
 ```
 
 ```
@@ -159,7 +191,7 @@ Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODc
 
 ### Returns:
 ```
-Product by id number.
+Product by any product id number. I am not sure of the applicable usage of this endpoint.
 ```
 
 ```
@@ -177,7 +209,7 @@ Product by id number.
 ## GET /api/products/:id/user
 
 ```
-Note: :id is the user id.
+Note: ':id' in the above GET url should be the logged in user's id. If this endpoint was needed for any reason.
 ```
 
 ### Expected request headers:
@@ -227,7 +259,11 @@ All the products for a specific user by the user id.
   }
 ]
 ```
-## POST /api/products
+## POST /api/:id/products
+
+```
+Note: ':id' in the above POST url should be the logged in user's id.
+```
 
 ### Expected request headers:
 
@@ -238,17 +274,12 @@ Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODc
 ### Expected request input:
 
 ```
-NOTE: I WILL NEED TO MODIFY THIS POST REQUEST TO INCLUDE THE USER_ID IN THE URL RATHER THAN PUT IT IN THE EXPECTED INPUT
-```
-
-```
 {
 	"category": "Other",
 	"market_area": "Uganda",
 	"name": "Ground Nuts",
 	"description": "2 pounds",
-	"price": "1200 UGX",
-	"user_id": 11
+	"price": "1,200.00 UGX"
 }
 ```
 
@@ -262,6 +293,6 @@ NOTE: I WILL NEED TO MODIFY THIS POST REQUEST TO INCLUDE THE USER_ID IN THE URL 
   "name": "Ground Nuts",
   "description": "2 pounds",
   "price": "1200 UGX",
-  "user_id": 11
+  "user_id": 13
 }
 ```
