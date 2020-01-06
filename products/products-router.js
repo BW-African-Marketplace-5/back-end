@@ -16,6 +16,7 @@ router.get("/products/:id", restricted, (req, res) => {
 
     Products.findById(id)
     .then(product => {
+        console.log("product", product)
         if(product){
             res
             .status(200)
@@ -23,7 +24,7 @@ router.get("/products/:id", restricted, (req, res) => {
         } else {
             res
             .status(404)
-            .json({ message: "The product with the specified id could not be found. Error on client end.", error})
+            .json({ message: "The product with the specified id could not be found. Error on client end."})
         }
     })
     .catch(error => {
@@ -45,7 +46,7 @@ router.get("/products/:id/user", (req, res) => {
         } else {
             res
             .status(404)
-            .json({ message: "A product list for the user with the specified id could not be found. Error on client end.", error})
+            .json({ message: "A product list for the user with the specified id could not be found. Error on client end."})
         }
     })
     .catch(error => {
@@ -55,10 +56,12 @@ router.get("/products/:id/user", (req, res) => {
     })
 })
   
-router.post("/products", restricted, (req, res) => {
-  let { category, market_area, name, description, price, user_id } = req.body
+router.post("/:id/products", restricted, (req, res) => {
   
-  Products.add(req.body)
+  const user_id = req.params.id
+  const { category, market_area, name, description, price } = req.body
+  
+  Products.add({...req.body, user_id})
   .then(savedProduct => {
     res
     .status(201)
