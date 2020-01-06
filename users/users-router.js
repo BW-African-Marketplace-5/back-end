@@ -12,17 +12,16 @@ router.get("/users", (req, res) => {
 
 router.get("/users/:id", (req, res) => {
   const id = req.params.id
-
-    Users.getById(id)
+    Users.findById(id)
     .then(user => {
         if(user){
-            res
-            .status(200)
-            .json(lady)
+          res
+          .status(200)
+          .json(user)
         } else {
-            res
-            .status(404)
-            .json({ message: "The user with the specified id could not be found. Error on client end.", error})
+          res
+          .status(404)
+          .json({ message: "The user with the specified id could not be found."})
         }
     })
     .catch(error => {
@@ -31,6 +30,5 @@ router.get("/users/:id", (req, res) => {
         .json({ message: "The server could not retrieve the user. Error on server end.", error})
     })
 })
-  
 
 module.exports = router;

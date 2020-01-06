@@ -1,8 +1,9 @@
 const router = require("express").Router();
 
 const Products = require("./products-model.js");
+const restricted = require('../auth/restricted_middleware.js');
 
-router.get("/products", (req, res) => {
+router.get("/products", restricted, (req, res) => {
   Products.find()
     .then(products => {
       res.json(products);
@@ -10,10 +11,10 @@ router.get("/products", (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.get("/products/:id", (req, res) => {
+router.get("/products/:id", restricted, (req, res) => {
   const id = req.params.id
 
-    Products.getById(id)
+    Products.findById(id)
     .then(product => {
         if(product){
             res
@@ -32,15 +33,15 @@ router.get("/products/:id", (req, res) => {
     })
 })
   
-router.get("/products/:user_id", (req, res) => {
-  const id = req.params.user_id
+router.get("/products/:id/user", (req, res) => {
+    const id = req.params.id
 
-    Products.getById(id)
+    Products.findUserProductsById(id)
     .then(products => {
-        if(product){
+        if(products.length){
             res
             .status(200)
-            .json({products})
+            .json(products)
         } else {
             res
             .status(404)
@@ -54,10 +55,10 @@ router.get("/products/:user_id", (req, res) => {
     })
 })
   
-server.post("/products", (req, res) => {
-  let { id, category, market_area, name, description, price, user_id } = req.body
+router.post("/products", restricted, (req, res) => {
+  let { category, market_area, name, description, price, user_id } = req.body
   
-  Products.insert(req.body)
+  Products.add(req.body)
   .then(savedProduct => {
     res
     .status(201)
@@ -66,7 +67,7 @@ server.post("/products", (req, res) => {
 .catch(error => {
   res
   .status(500)
-  .json({ message: "The server was not able to create the lady", error})
+  .json({ message: "The server was not able to create the product listing", error})
 })
 })
 

@@ -36,7 +36,7 @@ module.exports = {
     },
     seeds: {
       directory: "./data/seeds",
-    },
+    }
   },
 
   production: {
@@ -48,5 +48,5 @@ module.exports = {
     seeds: {
       directory: "./data/seeds",
     },
-  },
+  }
 };
