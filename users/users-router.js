@@ -1,10 +1,8 @@
 const router = require("express").Router();
 
 const Users = require("./users-model.js");
-const Products = require("../products/products-model.js")
-const restricted = require('../auth/restricted_middleware.js');
 
-router.get("/users", restricted, (req, res) => {
+router.get("/users", (req, res) => {
   Users.find()
     .then(users => {
       res.json(users);
@@ -12,19 +10,18 @@ router.get("/users", restricted, (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.get("/users/:id", restricted, (req, res) => {
+router.get("/users/:id", (req, res) => {
   const id = req.params.id
-
-    Users.getById(id)
+    Users.findById(id)
     .then(user => {
         if(user){
-            res
-            .status(200)
-            .json(user)
+          res
+          .status(200)
+          .json(user)
         } else {
-            res
-            .status(404)
-            .json({ message: "The user with the specified id could not be found. Error on client end.", error})
+          res
+          .status(404)
+          .json({ message: "The user with the specified id could not be found."})
         }
     })
     .catch(error => {
@@ -33,6 +30,5 @@ router.get("/users/:id", restricted, (req, res) => {
         .json({ message: "The server could not retrieve the user. Error on server end.", error})
     })
 })
-  
 
 module.exports = router;

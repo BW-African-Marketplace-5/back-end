@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
             if (err) {
                 res
                 .status(401)
-                .json({ message: "You shall not pass! Client Error", error})
+                .json({ message: "You shall not pass! Client Error", err})
             } else {
                 req.user = decodedToken
                 next();

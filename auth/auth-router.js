@@ -18,7 +18,7 @@ router.post("/register", validateUser, (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", validateUser, (req, res) => {
   let { username, password } = req.body;
 
   Users.findBy({ username })

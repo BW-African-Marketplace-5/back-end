@@ -1,4 +1,4 @@
-const db = require('../database/dbConfig.js');
+const db = require('../data/dbConfig.js');
 
 module.exports = {
   add,
@@ -28,6 +28,8 @@ async function add(user) {
 
   return findById(id);
 }
+
+
 
 
 
