@@ -13,6 +13,7 @@ module.exports = (req, res, next) => {
                 .json({ message: "You shall not pass! Client Error", err})
             } else {
                 req.user = decodedToken
+                console.log(req.user)
                 next();
             }
         });
