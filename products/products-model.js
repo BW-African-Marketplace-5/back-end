@@ -9,8 +9,9 @@ module.exports = {
 };
 
 function find() {
-  return db("products")
-        .select("id", "category", "market_area", "name", "description", "price", "user_id");
+  return db("products as p")
+        .select("p.id", "p.category", "p.market_area", "p.name", "p.description", "p.price", "u.username",  "p.user_id")
+        .join("users as u", "p.user_id", "u.id")
 }
 
 function findBy(filter) {

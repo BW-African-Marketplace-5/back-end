@@ -6,11 +6,13 @@ Base Url: https://evendsapi.herokuapp.com
 
 #### Pitch
 
-
+Sauti Africa empowers small business owners, particularly women, to improve their business and economic opportunities to grow out of poverty.  You will build a platform to enable these business owners to create listing for items they have for sale.
 
 #### MVP
 
-
+- A small business owner can log on and see relevant prices in various categories to help them set their own prices.
+- They can also make listing for what they want to sell, which will show up to all users.
+- They add a new item by selecting their market location, and then typing in their item name, description, and price.
 
 # Authentication Endpoints:
 
@@ -157,6 +159,7 @@ An array of objects of all listed products.
     "name": "Chicken Breast",
     "description": "1 pound Boneless Skinless",
     "price": "1,100.00 RWF",
+    "username": "Dorri Pedrozzi",
     "user_id": 6
   },
   {
@@ -166,6 +169,7 @@ An array of objects of all listed products.
     "name": "Beef Round",
     "description": "or Equivalent Back Leg Red Meat (1 pound)",
     "price": "500.00 RWF",
+    "username": "Dorri Pedrozzi",
     "user_id": 6
   },
   {
@@ -175,6 +179,7 @@ An array of objects of all listed products.
     "name": "Beans",
     "description": "2 pounds Beans",
     "price": "1,600.00 RWF",
+    "username": "Abra Arkow",
     "user_id": 4
   }
 ]
