@@ -66,13 +66,12 @@ router.post("/:id/products", restricted, (req, res) => {
     res
     .status(201)
     .json({...savedProduct, category, market_area, name, description, price, user_id })
+    })
+    .catch(error => {
+    res
+    .status(500)
+    .json({ message: "The server was not able to create the product listing", error})
+    })
 })
-.catch(error => {
-  res
-  .status(500)
-  .json({ message: "The server was not able to create the product listing", error})
-})
-})
-
 
 module.exports = router;
