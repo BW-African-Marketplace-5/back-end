@@ -274,7 +274,8 @@ All the products for a specific user by the user id.
 ## POST /api/:id/products
 
 ```
-Note: ':id' in the above POST url should be the logged in user's id.
+Note 1: ':id' in the above POST url should be the logged in user's id.
+Note 2: image url can be left blank.
 ```
 
 ### Expected request headers:
@@ -287,12 +288,12 @@ Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODc
 
 ```
 {
-	"category": "Other",
-	"market_area": "Ethiopia",
-	"name": "Groundnuts",
-	"description": "12 pounds",
-	"price": "500.00 ED",
-	"image_url": "https://imgur.com/KQPxtCM"
+ "category": "Other",
+ "market_area": "Ethiopia",
+ "name": "Groundnuts",
+ "description": "12 pounds",
+ "price": "500.00 ED",
+ "image_url": "https://imgur.com/KQPxtCM"
 }
 ```
 
