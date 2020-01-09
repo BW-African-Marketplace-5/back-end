@@ -1,14 +1,13 @@
 
 exports.up = function(knex) {
-    return knex.schema.alterTable('products', products => {
+    return knex.schema.table('products', products => {
          products
             .string('image_url', 1000)
-            .defaultTo('No image available.')
       });  
 };
 
 exports.down = function(knex) {
-  return knex.schema.alterTable('products', products => {
+  return knex.schema.table('products', products => {
       products.dropColumn('image_url');
   });
 };
