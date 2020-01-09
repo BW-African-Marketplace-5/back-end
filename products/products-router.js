@@ -60,13 +60,13 @@ router.get("/products/:id/user", (req, res) => {
 router.post("/:id/products", restricted, validateData, (req, res) => {
   
   const user_id = req.params.id
-  const { category, market_area, name, description, price } = req.body
+  const { category, market_area, name, description, price, image_url } = req.body
   
   Products.add({...req.body, user_id})
   .then(savedProduct => {
     res
     .status(201)
-    .json({...savedProduct, category, market_area, name, description, price, user_id })
+    .json({...savedProduct, category, market_area, name, description, price, user_id, image_url })
     })
     .catch(error => {
     res
