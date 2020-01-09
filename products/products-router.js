@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const Products = require("./products-model.js");
 const restricted = require('../auth/restricted_middleware.js');
+const validateData = require('./productdata-validation.js')
 
 router.get("/products", restricted, (req, res) => {
   Products.find()
@@ -56,7 +57,7 @@ router.get("/products/:id/user", (req, res) => {
     })
 })
   
-router.post("/:id/products", restricted, (req, res) => {
+router.post("/:id/products", restricted, validateData, (req, res) => {
   
   const user_id = req.params.id
   const { category, market_area, name, description, price } = req.body
@@ -73,5 +74,28 @@ router.post("/:id/products", restricted, (req, res) => {
     .json({ message: "The server was not able to create the product listing", error})
     })
 })
+
+router.delete("/products/:id", (req, res) => {
+    const id = req.params.id
+  
+    Products.getById(id)
+      .then(product => {
+      Ladies.remove(id)
+        .then(removeProduct => {
+          if(removeProduct) {
+              res.status(200)
+              .json({message: `The Product with ID number ${id} has been successfully removed.`, product })
+          } else {
+              res.status(404).json({ errorMessage: "The Product with the specified ID does not exist." })
+          }
+        })
+      })
+      .catch (error => {
+          console.log("error on DELETE /products/:id", error);
+          res
+          .status(500)
+          .json({ errorMessage: "The Product could not be removed." })
+      });
+    })
 
 module.exports = router;

@@ -5,7 +5,8 @@ module.exports = {
   find,
   findBy,
   findById,
-  findUserProductsById
+  findUserProductsById,
+  remove
 };
 
 function find() {
@@ -38,5 +39,10 @@ function findUserProductsById(id){
   .where("user_id", id)
 }
 
+function remove(id){
+  return db('products')
+  .where({ id })
+  .del();
+}
 
 
