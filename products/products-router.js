@@ -78,9 +78,9 @@ router.post("/:id/products", restricted, validateData, (req, res) => {
 router.delete("/products/:id", (req, res) => {
     const id = req.params.id
   
-    Products.getById(id)
+    Products.findById(id)
       .then(product => {
-      Ladies.remove(id)
+      Products.remove(id)
         .then(removeProduct => {
           if(removeProduct) {
               res.status(200)
