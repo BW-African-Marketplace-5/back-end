@@ -160,7 +160,8 @@ An array of objects of all listed products.
     "description": "1 pound Boneless Skinless",
     "price": "1,100.00 RWF",
     "username": "Dorri Pedrozzi",
-    "user_id": 6
+    "user_id": 6,
+    "image_url": "https://imgur.com/PoY6nZd"
   },
   {
     "id": 2,
@@ -170,7 +171,8 @@ An array of objects of all listed products.
     "description": "or Equivalent Back Leg Red Meat (1 pound)",
     "price": "500.00 RWF",
     "username": "Dorri Pedrozzi",
-    "user_id": 6
+    "user_id": 6,
+    "image_url": "https://imgur.com/EEGqr8E"
   },
   {
     "id": 3,
@@ -180,7 +182,8 @@ An array of objects of all listed products.
     "description": "2 pounds Beans",
     "price": "1,600.00 RWF",
     "username": "Abra Arkow",
-    "user_id": 4
+    "user_id": 4,
+    "image_url": "https://imgur.com/yNDFASn"
   }
 ]
 ```
@@ -201,13 +204,14 @@ Product by any product id number. I am not sure of the applicable usage of this 
 
 ```
 {
-  "id": 27,
-  "category": "Meats",
+  "id": 28,
+  "category": "Other",
   "market_area": "Uganda",
-  "name": "Beef Round",
-  "description": "0.15 kg (or Equivalent Back Leg Red Meat)",
-  "price": "1,612.50 UGX",
-  "user_id": 9
+  "name": "Eggs",
+  "description": "2 Dozen brown",
+  "price": "12,000.00 UGX",
+  "user_id": 8,
+  "image_url": "https://imgur.com/Kbd0eDI"
 }
 ```
 
@@ -233,34 +237,37 @@ All the products for a specific user by the user id.
 ```
 [
   {
-    "username": "Gabi Stringer",
-    "user_id": 8,
-    "product_id": 22,
-    "category": "Fruits",
-    "market_area": "Uganda",
-    "name": "Oranges",
-    "description": "0.30 kg",
-    "price": "975.00 UGX"
+    "username": "Denver Ramalhete",
+    "user_id": 10,
+    "product_id": 17,
+    "category": "Vegetables",
+    "market_area": "Kenya",
+    "name": "Onion",
+    "description": "yellow 1 kg",
+    "price": "115.05 KSh",
+    "image_url": "https://imgur.com/Y7S7BZ6"
   },
   {
-    "username": "Gabi Stringer",
-    "user_id": 8,
-    "product_id": 24,
-    "category": "Meats",
-    "market_area": "Uganda",
-    "name": "Beef Round",
-    "description": "0.15 kg (or Equivalent Back Leg Red Meat)",
-    "price": "1,612.50 UGX"
+    "username": "Denver Ramalhete",
+    "user_id": 10,
+    "product_id": 18,
+    "category": "Grains",
+    "market_area": "Kenya",
+    "name": "Rice",
+    "description": "1 kg",
+    "price": "167.85 KSh",
+    "image_url": "https://imgur.com/LH41g7W"
   },
   {
-    "username": "Gabi Stringer",
-    "user_id": 8,
-    "product_id": 28,
-    "category": "Other",
-    "market_area": "Uganda",
-    "name": "Eggs",
-    "description": "2 Dozen brown",
-    "price": "12,000.00 UGX"
+    "username": "Denver Ramalhete",
+    "user_id": 10,
+    "product_id": 21,
+    "category": "Vegetables",
+    "market_area": "Kenya",
+    "name": "Onion",
+    "description": "regular 1 liter",
+    "price": "115.05 KSh",
+    "image_url": "https://imgur.com/Y7S7BZ6"
   }
 ]
 ```
@@ -281,10 +288,11 @@ Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODc
 ```
 {
 	"category": "Other",
-	"market_area": "Uganda",
-	"name": "Ground Nuts",
-	"description": "2 pounds",
-	"price": "1,200.00 UGX"
+	"market_area": "Ethiopia",
+	"name": "Groundnuts",
+	"description": "12 pounds",
+	"price": "500.00 ED",
+	"image_url": "https://imgur.com/KQPxtCM"
 }
 ```
 
@@ -292,12 +300,13 @@ Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTczODc
 
 ```
 {
-  "id": 30,
+  "id": 29,
   "category": "Other",
-  "market_area": "Uganda",
-  "name": "Ground Nuts",
-  "description": "2 pounds",
-  "price": "1200 UGX",
-  "user_id": 13
+  "market_area": "Ethiopia",
+  "name": "Groundnuts",
+  "description": "12 pounds",
+  "price": "500.00 ED",
+  "user_id": "10",
+  "image_url": "https://imgur.com/KQPxtCM"
 }
 ```
