@@ -11,7 +11,7 @@ module.exports = {
 
 function find() {
   return db("products as p")
-        .select("p.id", "p.category", "p.market_area", "p.name", "p.description", "p.price", "u.username",  "p.user_id")
+        .select("p.id", "p.category", "p.market_area", "p.name", "p.description", "p.price", "u.username",  "p.user_id", "p.image_url")
         .join("users as u", "p.user_id", "u.id")
 }
 
@@ -34,7 +34,7 @@ async function add(product) {
 
 function findUserProductsById(id){
   return db("products as p")
-  .select("u.username", "p.user_id", "p.id as product_id", "p.category", "p.market_area", "p.name", "p.description", "p.price")
+  .select("u.username", "p.user_id", "p.id as product_id", "p.category", "p.market_area", "p.name", "p.description", "p.price", "p.image_url")
   .join("users as u", "p.user_id", "u.id")
   .where("user_id", id)
 }
