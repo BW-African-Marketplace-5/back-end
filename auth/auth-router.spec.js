@@ -22,7 +22,7 @@ describe("auth-router.js", function() {
             await db("users").truncate();
         });//end of async clean up function
 
-        it('Should return the username and return the created id of 1', async function(){
+        it('Should return the username', async function(){
             const user = { username: "Paris", password: "I am a fashion icon."}
             const res = await request(server)
                 .post("/api/register")

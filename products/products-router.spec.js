@@ -67,39 +67,39 @@ describe("product-router.js", () => {
     });
   });
 
-//   describe('DELETE /api/products/:id', () => {
-//     it('should return an object with correct data with a 201 http status code', () => {
-//       return request(server)
-//         .post('/api/register')
-//         .send({ username: "Athens", password: "I am a fashion icon." })
-//         .then(r=>{
-//         //   console.log("R", r)
-//           return request(server)
-//           .post('/api/login')
-//           .send({ username: "Athens", password: "I am a fashion icon." })
-//           .then(re=>{
-//             // console.log("RE", re)
-//             return request(server)
-//             .post(`/api/${r.body.id}/products`)
-//             .send({	category: "Fruit",
-//             market_area: "Ethiopia",
-//             name: "Groundnuts",
-//             description: "12 pounds",
-//             price: "500.00 ED",
-//             image_url: "https://imgur.com/KQPxtCM"})
-//             .set('Authorization', re.body.token)
-//             .then(res=>{
-//               console.log('RESPONSE2', res)
-//               return request(server)
-//               .del(`/api/products/${res.body.id}`)
-//               .then(resp=>{
-//             //   console.log('RESP', resp)
-//               expect(resp.status).toEqual(200);
-//               })
-//             })
-//           })
-//         })
-//     });
-//   });
+  describe('DELETE /api/products/:id', () => {
+    it('should return an object with correct data with a 201 http status code', () => {
+      return request(server)
+        .post('/api/register')
+        .send({ username: "Athens", password: "I am a fashion icon." })
+        .then(r=>{
+        //   console.log("R", r)
+          return request(server)
+          .post('/api/login')
+          .send({ username: "Athens", password: "I am a fashion icon." })
+          .then(re=>{
+            // console.log("RE", re)
+            return request(server)
+            .post(`/api/${r.body.id}/products`)
+            .send({	category: "Fruit",
+            market_area: "Ethiopia",
+            name: "Groundnuts",
+            description: "12 pounds",
+            price: "500.00 ED",
+            image_url: "https://imgur.com/KQPxtCM"})
+            .set('Authorization', re.body.token)
+            .then(res=>{
+              console.log('RESPONSE2', res)
+              return request(server)
+              .del(`/api/products/${res.body.id}`)
+              .then(resp=>{
+            //   console.log('RESP', resp)
+              expect(resp.status).toEqual(200);
+              })
+            })
+          })
+        })
+    });
+  });
 
 });

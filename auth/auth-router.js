@@ -53,7 +53,7 @@ function signToken(user) {
     id: user.id
   };
 
-  const secret = process.env.JWT_SECRET || "The little boy jumped to see such fun, & the dish ran away with the spoon!";
+  const secret = process.env.JWT_SECRET;
 
   const options = {
     expiresIn: "1d",
